@@ -1,0 +1,11 @@
+1. Get the data for the License , Citizenship and Passport 
+2. Perform the Data Augmentation on the training test sets 
+3. Perform the Preprocessing according to the Model. 
+4. Train the Model 
+5. Perform Analysis on the Model 
+6. Track the Model using the MLflow.
+7. Save the model in a format that can be used by other applications.
+8. Load the saved model from disk into memory.
+9. Make predictions with the loaded model.
+10. Evaluate the performance of the trained model.
+11. Deploy the Model on the streamlit 
