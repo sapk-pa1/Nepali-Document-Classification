@@ -1,7 +1,8 @@
 import streamlit as st
 import numpy as np
 from src.data_preprocessing.preprocess import process_img
-from src.models.load_model import load_model
+from src.models.load_model import load_resnet50_doc_class
+from PIL import Image
 st.set_page_config(layout="wide")
 
 
@@ -48,10 +49,14 @@ with col2:
         # Display the "Classifying..." message in the placeholder
         classifying_placeholder.text("Classifying...")
 
+        # Read the content of the uploaded file
+        image = Image.open(uploaded_file)
+        image_np = np.array(image)
+
         # Process and classify the image
-        processed_image = process_img(uploaded_file)
+        processed_image = process_img(image_np)  # Assuming process_img takes a NumPy array
         predictions = model.predict(processed_image)
-        class_names = ['Citizenship', 'License', 'Passport']  
+        class_names = ['Citizenship', 'License', 'Passport']
         predicted_class = class_names[np.argmax(predictions)]
 
         # Clear the "Classifying..." message from the placeholder
